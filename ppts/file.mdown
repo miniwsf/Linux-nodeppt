@@ -1,0 +1,58 @@
+[slide]
+## Linux分享
+----
+
+* 磁盘管理
+* 进程管理
+
+[slide]
+## df 查看磁盘使用情况
+----
+>df:Disk free  空余硬盘
+
+<pre><code class="markdown">
+df  /* 显示当前磁盘使用情况 */
+df -t 文件名  /* 显示特定的文件系统 */
+...
+</code>
+</pre>
+
+[slide]
+## fsck 检查和修复文件系统
+----
+>fsck:File System ChecK  
+
+<pre><code class="markdown">
+fsck  分区编号/* 指定需要检查的文件系统 */
+fsck -p /* 读取fstab文件确定检查哪些文件系统 */
+...
+</code>
+</pre>
+
+[slide]
+## 压缩工具
+----
+>gzip:(或者gunzip)支持的扩展名有.gz、.Z、-gz、.z、-z和Z
+>bzip2:比gzip压缩率更高
+
+<pre><code class="markdown">
+gzip/bzip2 文件 /* 压缩文件 */
+gzip -l 文件 /* 查看压缩效果 */
+gzip -tv 文件 /* 测试压缩文件的完整性 */
+gunzip/bunzip2 文件 /* 解压文件 */
+gunzip/bzip2 -d 文件 /* 解压文件 */
+...
+</code>
+</pre>
+
+[slide]
+## 存档工具
+----
+>tar:文件打包
+
+<pre><code class="markdown">
+tar -cvwf 文件 目录/* 读取多个文件和目录，并打包成为一个文件（c：指导tar创建归档文件，v：显示命令执行过程，f：指定归档文件中的文件名，w:每次讲单个文件加入或抽出归档文件是征求用户意见，z：自动调用gzip程序） */
+tar -xvf 文件 目录/* 解开.tar文件（x：解开文档） */
+...
+</code>
+</pre>
