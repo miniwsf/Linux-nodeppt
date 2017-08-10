@@ -6,6 +6,15 @@
 * 进程管理
 
 [slide]
+## Linux文件系统
+----
+> 文件系统是一种对物理空间的组织方式，通常在格式化硬盘时创建。
+* ext3fs和ext4fs文件系统
+>ext4fs是对ext3fs的扩展和完善。ext4fs通过增加日志功能，提高了文件系统的可靠性。
+* ReiserFS文件系统
+>日志文件系统，免去了对系统奔溃、意外断电等特殊事件的担忧。在算法空间效率更优。
+
+[slide]
 ## df 查看磁盘使用情况
 ----
 >df:Disk free  空余硬盘
@@ -53,6 +62,55 @@ gunzip/bzip2 -d 文件 /* 解压文件 */
 <pre><code class="markdown">
 tar -cvwf 文件 目录/* 读取多个文件和目录，并打包成为一个文件（c：指导tar创建归档文件，v：显示命令执行过程，f：指定归档文件中的文件名，w:每次讲单个文件加入或抽出归档文件是征求用户意见，z：自动调用gzip程序） */
 tar -xvf 文件 目录/* 解开.tar文件（x：解开文档） */
+...
+</code>
+</pre>
+
+[slide]
+## 进程管理
+----
+* 什么是进程？
+>进程：进程是操作系统的一个抽象概念，用来表示正在运行的程序。
+* 进程的属性
+>PID（进程的ID号）：标识进程身份的ID号
+>PPID（父进程的PID）：Linux中，所有的进程都必须由另一个进程创建（除了在系统引导时，由内核自主创建并安装的那几个进程。，创建它的那个进程就是父进程。
+>UID和EUID（真实和有效的用户ID）：进程的UID就是创建者的用户ID号（标识进程的属主），EUID用来确定进程对某些资源和文件的访问权限。
+>GID和EGID（真实和有效的组ID）：GID就是创建者所属组的ID，EGID类似于EUID
+
+[slide]
+## 监视进程
+----
+>ps：Process Status  进程状态
+
+<pre><code class="markdown">
+ps aux /* 显示当前系统上运行的所有进程信息 */
+ps lax /* 可以提供PPID和谦让度（NI），不会显示进程属主的用户名 */
+top /* 即时跟踪当前系统中进程的情况 */
+...
+</code>
+</pre>
+
+[slide]
+## 查看占用文件的进程
+----
+>lsof：List Open Files
+
+<pre><code class="markdown">
+lsof 文件名 /* 列出指定文件的进程信息 */
+lsof /* 列出当前系统中所有打开文件的进程信息 */
+...
+</code>
+</pre>
+
+[slide]
+## 向进程发送信号
+----
+
+<pre><code class="markdown">
+kill -l /* 显示所有的信号及其编号 */
+kill 信号名称  PID（进程ID）/* 向某个进程发送某个信号 */
+kill -TERM/-SIGTERM  PID（进程ID）/* 请求终止某项操作 */
+kill -KILL/SIGKILL  PID（进程ID）/* 结束进程 */
 ...
 </code>
 </pre>
